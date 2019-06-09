@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>CD Collection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/font-awesome/css/font-awesome.min.css}" rel="stylesheet" media="screen"/>
+    <script th:src="@{/jquery/jquery.min.js}"></script>
+    <script th:src="@{/popper/popper.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+
+</head>
+<body>
+<div class="container-fluid m-0 h-100">
+    <div th:replace="~{header :: copy}"></div>
+
+    <div class="row">
+        <div class="col-12 mt-1 mb-1 pb-2 pt-2" id="action-title">
+            <h2 class="text-center">Загрузка XML-файла на сервер</h2>
+        </div>
+    </div>
+
+    <div class="row" style="padding-top: 12px;"></div>
+
+    <form method="POST" action="/process-xml" enctype="multipart/form-data">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-3 col-centered align-content-center mt-1 mb-1 pb-2 pt-2">
+                <label class="btn btn-default btn-file">
+                    Выберите файл
+                    <input type="file" name="file" style="display: none;">
+                </label>
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-centered align-content-center mt-1 mb-1 pb-2 pt-2">
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </div>
+        </div>
+
+        <div class="row" style="padding-top: 25px;"></div>
+
+        <div class="row justify-content-center align-items-center">
+            <span>Пример содержимого файла:</span>
+        </div>
+
+        <div class="row" style="padding-top: 12px;"></div>
+
+        <div class="row justify-content-center align-items-center">
+            <div class="col-5 col-centered align-content-center mt-1 mb-1 pb-2 pt-2 text-col" >
+                <div class="text-container">
+                <textarea class="text-area" rows="20" readonly>
+<CATALOG>
+  <CD>
+    <TITLE>Adele. 25</TITLE>
+    <ARTIST>Adele</ARTIST>
+    <COUNTRY>EU</COUNTRY>
+    <COMPANY>XL Recordings</COMPANY>
+    <PRICE>15.80</PRICE>
+    <YEAR>2015</YEAR>
+  </CD>
+  <CD>
+    <TITLE>I'm John Lee Hooker</TITLE>
+    <ARTIST>John Lee Hooker</ARTIST>
+    <COUNTRY>EU</COUNTRY>
+    <COMPANY>Cornbread</COMPANY>
+    <PRICE>14.70</PRICE>
+    <YEAR>2017</YEAR>
+  </CD>
+</CATALOG>
+                </textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

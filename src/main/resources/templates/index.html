@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>CD Collection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/font-awesome/css/font-awesome.min.css}" rel="stylesheet" media="screen"/>
+    <script th:src="@{/jquery/jquery.min.js}"></script>
+    <script th:src="@{/popper/popper.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+
+</head>
+<body>
+<div class="container-fluid m-0 h-100">
+    <div th:replace="~{header :: copy}"></div>
+
+    <div class="row">
+        <div class="col-12 mt-1 mb-1 pb-2 pt-2" id="action-title">
+            <h2 class="text-center">Каталог CD дисков:</h2>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div th:if="${musicCompactDisks.size() > 0}" class="pagination1">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-9 col-centered align-content-center mt-1 mb-1 pb-2 pt-2">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination pagination-sm pg-blue">
+                        <th:block th:unless="${pageCount<1}" th:each="num: ${#numbers.sequence(1,pageCount)}">
+                            <div th:with="expr_result = ${currentPage == num}">
+                                <div th:if="${expr_result}">
+                                    <li class="page-item active pagination-lg ml-1 mr-1"><a class="page-link"
+                                                                                            href="javascript:void(0);"><span
+                                            th:text=${num}></span></a></li>
+                                </div>
+                                <div th:unless="${expr_result}">
+                                    <li class="page-item pagination-lg ml-1 mr-1"><a class="page-link"
+                                                                                     th:href="@{${'?page='}+${num}}"><span
+                                            th:text=${num}></span></a></li>
+                                </div>
+                            </div>
+                        </th:block>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+    <!-- end pagination -->
+
+
+    <div class="row justify-content-center align-items-center">
+        <div class="col-9 col-centered align-content-center mt-1 mb-1 pb-2 pt-2">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th class="text-center" scope="col">Наименование</th>
+                    <th class="text-center" scope="col">Артист</th>
+                    <th class="text-center" scope="col">Страна</th>
+                    <th class="text-center" scope="col">Компания</th>
+                    <th class="text-center" scope="col">Цена</th>
+                    <th class="text-center" colspan="2">Год</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${musicCompactDisks}">
+                    <td class="text-center" th:text="${{item.title}}"></td>
+                    <td th:text="${item.artist}"></td>
+                    <td th:text="${item.country}"></td>
+                    <td th:text="${item.company}"></td>
+                    <td th:text="${item.price}"></td>
+                    <td th:text="${item.year}"></td>
+
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row justify-content-center align-items-center">
+        <div class="col-9 col-centered align-content-center mt-1 mb-1 pb-2 pt-2">
+            <div id="do-upload">
+                <a th:href="@{/upload-xml/}">Загрузить XML-файл</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center align-items-center">
+        <div class="col-9 col-centered align-content-center mt-1 mb-1 pb-2 pt-2">
+            <div id="do-download">
+                <a th:href="@{/download-xml}">Скачать с сервера объединенный XML-файл</a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+    text-align: center;
+
+}
+
+.text-container {
+    width: 100%;
+    height: 100%;
+}
+
+.text-col {
+    height: 300px;
+    width: 100%;
+}
+
+.text-area {
+    height: 100%;
+    width: 100%;
+    font-size: 12px;
+}

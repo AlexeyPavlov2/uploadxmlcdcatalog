@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>CD Collection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet" media="screen"/>
+    <link th:href="@{/font-awesome/css/font-awesome.min.css}" rel="stylesheet" media="screen"/>
+    <script th:src="@{/jquery/jquery.min.js}"></script>
+    <script th:src="@{/popper/popper.min.js}"></script>
+    <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+
+</head>
+<body>
+<div class="container-fluid m-0 h-100">
+    <div th:replace="~{header :: copy}"></div>
+
+    <div class="row justify-content-center align-items-center">
+        <div class="col-12 col-centered align-content-center mt-1 mb-1 pb-2 pt-2">
+            <div th:class="${error ? 'alert alert-danger' : 'alert alert-secondary'}" role="alert">
+                <span th:text="${message}"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center align-items-center">
+        <div class="col-12 col-centered align-content-center mt-1 mb-1 pb-2 pt-2">
+            <a th:href="@{/}">На основную страницу </a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center align-items-center">
+        <div class="col-9 col-centered align-content-center mt-1 mb-1 pb-2 pt-2">
+            <div id="do-download">
+                <a th:href="@{/download-xml}">Скачать с сервера объединенный XML-файл</a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>
